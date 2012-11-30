@@ -1,3 +1,4 @@
+A
 a
 aa
 aal
@@ -25415,7 +25416,7 @@ brachelytrous
 bracherer
 brachering
 brachet
-brachial\b\n[a-z|A-Z]\n\b
+brachial
 brachialgia
 brachialis
 Brachiata
@@ -25430,7 +25431,7 @@ brachiocrural
 brachiocubital
 brachiocyllosis
 brachiofacial
-brachiofaciolingual\b\n[a-z|A-Z]\n\b
+brachiofaciolingual
 brachioganoid
 Brachioganoidei
 brachiolaria
