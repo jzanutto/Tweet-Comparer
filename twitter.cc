@@ -4,7 +4,7 @@
 #include <sstream>
 #include <iomanip>
 #include <ctype.h>
-
+#include <string>
 #include <vector>
 #include <set>
 
@@ -131,7 +131,9 @@ string ParseWord(string token)
     //      - RT (retweet) keyword
     if (token.substr(0, 1) == "@" || 
         token.substr(0, 7) == "http://" ||
-        token == "RT")
+        token == "RT" || token.substr(0,1)=="#" ||
+        token.substr(0,1)==":" ||
+        token.substr(0,1)=="=")
     {
         return "";
     }
@@ -247,19 +249,40 @@ int main()
     cerr << setw(12) << "Dictionary: " << dictionary.size() << endl;
     cerr << setw(12) << "#swag: " << swagTweets.size() << endl;
     cerr << setw(12) << "#yolo: " << yoloTweets.size() << endl;
-
+    int totalWrong = 0;
+    int incorrectSwag = 0;
+    int incorrectYOLO = 0;
     for (int i = 0; i < swagTweets.size(); ++i)
     {
         cout << setw(20) << "Original Tweet: " << swagTweets[i].originalTweet << endl;
         cout << setw(20) << "Parsed Tokens: " << swagTweets[i].GetTweet() << endl;
         cout << setw(20) << "Correct Words: " << swagTweets[i].correctSpelling << endl;
         cout << setw(20) << "Incorrect Words: " << endl;
-        
-        for (int j = 0; j < swagTweets[i].incorrectlySpelledWords.size(); ++j)
+        int j = 0;
+        for (; j < swagTweets[i].incorrectlySpelledWords.size(); ++j)
         {
             cout << setw(20) << " " << swagTweets[i].incorrectlySpelledWords[j] << endl;
+            totalWrong++;
         }
-
+        incorrectSwag+=j;
         cout << endl;
     }
+    for (int i = 0; i < yoloTweets.size(); ++i)
+    {
+        cout << setw(20) << "Original Tweet: " << yoloTweets[i].originalTweet << endl;
+        cout << setw(20) << "Parsed Tokens: " << yoloTweets[i].GetTweet() << endl;
+        cout << setw(20) << "Correct Words: " << yoloTweets[i].correctSpelling << endl;
+        cout << setw(20) << "Incorrect Words: " << endl;
+        int j = 0;
+        for (; j < yoloTweets[i].incorrectlySpelledWords.size(); ++j)
+        {
+            cout << setw(20) << "Original Tweet: " << yoloTweets[i].incorrectlySpelledWords[j] << endl;
+            totalWrong++;
+        }
+        incorrectYOLO+=j;
+        cout << endl;
+    }
+    cerr << "Total incorrectness in swag: " << incorrectSwag << endl;
+    cerr << "Total incorrectness in YOLO: " << incorrectYOLO << endl;
+    cerr << "Total spelling mistakes: " << totalWrong << endl;
 }
