@@ -10,7 +10,7 @@ validWords = set()
 for word in wordList:
     validWords.add(word.lower())
 
-dictionary = list(validWords)
+dictionary = set(validWords)
 
 
 
