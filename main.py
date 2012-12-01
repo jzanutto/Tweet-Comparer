@@ -1,22 +1,18 @@
-from twitter import *
-from dictionary import *
-
-dictionary = BuildDictionary("data/dict-v2.txt")
-yoloTweets = ReadTweets("data/#YOLO_tweets_2012_11_29.csv")
-swagTweets = ReadTweets("data/#SWAG_tweets_2012_11_29.csv")
-
-
-
-
-
-for tweet in yoloTweets:
-    print "---------------------------"
-    print ""
-    print tweet.originalTweet
-    print tweet.parsedTweet
-    print ""
-
-    for word in tweet.tokens:
-        print word
+from dictionary import *   
     
-    print ""
+yoloData = CalculateData("data/#YOLO_tweets_2012_11_29.csv", "swag")
+swagData = CalculateData("data/#SWAG_tweets_2012_11_29.csv", "yolo")
+
+print ""
+print "#yolo"
+print "n:",len(yoloData["tweets"])
+print "sum:",yoloData["sumIncorrectWords"]
+print "mean:",yoloData["meanIncorrectWords"]
+print "std.dev:",yoloData["stdDeviation"]
+
+print ""
+print "#swag"
+print "n:",len(swagData["tweets"])
+print "sum:",swagData["sumIncorrectWords"]
+print "mean:",swagData["meanIncorrectWords"]
+print "std.dev:",swagData["stdDeviation"]
