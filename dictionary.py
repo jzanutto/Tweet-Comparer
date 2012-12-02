@@ -11,7 +11,11 @@ def BuildDictionary():
     for word in wordList:
         dictionary.add(word.strip().lower())
 
+<<<<<<< HEAD
     return dictionary
+=======
+dictionary = set(validWords)
+>>>>>>> 216a34a93e4d5b0416ead50786890cc95e67f2ae
 
 
 
