@@ -13,7 +13,7 @@ def ReadTweets(csvFileName, excludeHash):
             newTweet = Tweet(row[2])
 
             # only add tweet to output list if it doesn't contain the other hash tag that we are comparing
-            if excludeHash not in newTweet.hashtags:
+            if excludeHash not in newTweet.hashtags and len(newTweet.tokens) > 0:
                 tweets.append(newTweet)
 
     return tweets

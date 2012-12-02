@@ -1,4 +1,3 @@
-A
 a
 aa
 aal
@@ -195788,7 +195787,6 @@ swaddling
 swaddy
 Swadeshi
 Swadeshism
-swag
 swagbellied
 swagbelly
 swage
